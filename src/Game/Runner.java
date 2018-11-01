@@ -2,6 +2,7 @@ package Game;
 
 import People.Person;
 import Rooms.Room;
+import Rooms.ShopRoom;
 import Rooms.WinningRoom;
 
 import java.util.Scanner;
