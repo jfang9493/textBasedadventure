@@ -1,8 +1,8 @@
 package Game;
 
 import People.Person;
+import Rooms.MonsterRoom;
 import Rooms.Room;
-import Rooms.ShopRoom;
 import Rooms.WinningRoom;
 
 import java.util.Scanner;
@@ -30,13 +30,16 @@ public class Runner {
 		int y = (int)(Math.random()*building.length);
 		building[x][y] = new WinningRoom(x, y);
 
-		//Create a random shop room.
-		int a = (int)(Math.random()*building.length);
-		int b = (int)(Math.random()*building.length);
-		building[a][b] = new ShopRoom(a, b);
+		//Create 5-7 random monster rooms
+		int randomMonster = (int) (Math.random()*2)+5;
+		for(int i = 0; i < randomMonster;i++) {
+			x = (int) (Math.random() * building.length);
+			y = (int) (Math.random() * building.length);
+			building[x][y] = new MonsterRoom(x, y);
+		}
 
 		 //Setup player 1 and the input scanner
-		Person player1 = new Person("FirstName", "FamilyName", 0,0);
+		Person player1 = new Person(0,5,0, 0,0);
 		building[0][0].enterRoom(player1);
 		Scanner in = new Scanner(System.in);
 		while(gameOn)

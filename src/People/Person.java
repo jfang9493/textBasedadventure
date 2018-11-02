@@ -4,9 +4,7 @@ package People;
  * Person represents the player as they move through the game.
  */
 public class Person {
-	String firstName;
-	String familyName;
-	int xLoc, yLoc;
+	int xLoc, yLoc, shield, potion, money;
 
 
 	public int getxLoc() {
@@ -25,12 +23,13 @@ public class Person {
 		this.yLoc = yLoc;
 	}
 
-	public Person (String firstName, String familyName, int xLoc, int yLoc)
+	public Person (int shield, int potion, int money, int xLoc, int yLoc)
 	{
-		this.firstName = firstName;
-		this.familyName = familyName;
 		this.xLoc = xLoc;
 		this.yLoc = yLoc;
+		this.shield = shield;
+		this.potion = potion;
+		this.money = money;
 	}
 
 

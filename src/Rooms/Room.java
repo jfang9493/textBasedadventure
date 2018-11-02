@@ -18,8 +18,13 @@ public class Room {
 	 */
 	public void enterRoom(Person x)
 	{
-		System.out.println("You enter a plain old room");
 		occupant = x;
+		int coin = (int)(Math.random()*5);
+		if (xLoc == 0 && yLoc == 0)
+		{
+			System.out.println("You are at the entrance of the castle.");
+		}
+		System.out.println("You found " + coin + " coins!";
 		x.setxLoc(this.xLoc);
 		x.setyLoc(this.yLoc);
 	}
