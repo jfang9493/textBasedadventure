@@ -32,11 +32,29 @@ public class Runner {
 
 		//Create 5-7 random monster rooms
 		int randomMonster = (int) (Math.random()*2)+5;
-		for(int i = 0; i < randomMonster;i++) {
-			x = (int) (Math.random() * building.length);
-			y = (int) (Math.random() * building.length);
-			building[x][y] = new MonsterRoom(x, y);
+		while (randomMonster > 0) {
+			for (int i = 0; i < randomMonster; i++) {
+				x = (int) (Math.random() * building.length);
+				y = (int) (Math.random() * building.length);
+				building[x][y] = new MonsterRoom(x, y);
+				randomMonster--;
+			}
 		}
+		//Create 3 random item rooms
+		for (int i = 0; i < 3;i++)
+		{
+			if (Math.random() > 0.50) {
+				x = (int) (Math.random() * building.length);
+				y = (int) (Math.random() * building.length);
+				building[x][y] = new PotionRoom(x, y);
+			}
+			else {
+				x = (int) (Math.random() * building.length);
+				y = (int) (Math.random() * building.length);
+				building[x][y] = new ShieldRoom(x, y);
+			}
+		}
+
 
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person(0,5,0, 0,0);

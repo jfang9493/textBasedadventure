@@ -24,7 +24,7 @@ public class Room {
 		{
 			System.out.println("You are at the entrance of the castle.");
 		}
-		System.out.println("You found " + coin + " coins!";
+		System.out.println("You found " + coin + " coins!");
 		x.setxLoc(this.xLoc);
 		x.setyLoc(this.yLoc);
 	}
