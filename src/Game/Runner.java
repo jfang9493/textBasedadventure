@@ -2,6 +2,7 @@ package Game;
 
 import People.Person;
 import Rooms.MonsterRoom;
+import Rooms.PotionRoom;
 import Rooms.Room;
 import Rooms.WinningRoom;
 
@@ -32,14 +33,12 @@ public class Runner {
 
 		//Create 5-7 random monster rooms
 		int randomMonster = (int) (Math.random()*2)+5;
-		while (randomMonster > 0) {
-			for (int i = 0; i < randomMonster; i++) {
-				x = (int) (Math.random() * building.length);
-				y = (int) (Math.random() * building.length);
-				building[x][y] = new MonsterRoom(x, y);
-				randomMonster--;
-			}
+		for (int i = 0; i < randomMonster; i++) {
+			x = (int) (Math.random() * building.length);
+			y = (int) (Math.random() * building.length);
+			building[x][y] = new MonsterRoom(x, y);
 		}
+
 		//Create 3 random item rooms
 		for (int i = 0; i < 3;i++)
 		{
