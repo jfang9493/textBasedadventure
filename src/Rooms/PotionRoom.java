@@ -2,7 +2,7 @@ package Rooms;
 
 import People.Person;
 
-public class PotionRoom extends ItemRoom{
+public class PotionRoom extends {
 	/**
 	 * Method controls the results when a person enters this room.
 	 * @param x the Person entering

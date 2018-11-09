@@ -2,21 +2,20 @@ package Game;
 
 import People.Person;
 import Rooms.MonsterRoom;
-import Rooms.PotionRoom;
+import Game.Board;
 import Rooms.Room;
 import Rooms.WinningRoom;
 
 import java.util.Scanner;
 
 public class Runner {
-	
 
 	private static boolean gameOn = true;
 	
 	public static void main(String[] args)
 	{
 		Room[][] building = new Room[5][5];
-		
+
 		//Fill the building with normal rooms
 		for (int x = 0; x<building.length; x++)
 		{
@@ -40,7 +39,7 @@ public class Runner {
 		}
 
 		//Create 3 random item rooms
-		for (int i = 0; i < 3;i++)
+		/** for (int i = 0; i < 3;i++)
 		{
 			if (Math.random() > 0.50) {
 				x = (int) (Math.random() * building.length);
@@ -52,7 +51,7 @@ public class Runner {
 				y = (int) (Math.random() * building.length);
 				building[x][y] = new ShieldRoom(x, y);
 			}
-		}
+		}*/
 
 
 		 //Setup player 1 and the input scanner
