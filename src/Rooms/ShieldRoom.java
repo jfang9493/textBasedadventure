@@ -2,14 +2,10 @@ package Rooms;
 
 import People.Person;
 
-public class ShieldRoom {
-	Person occupant;
-	int xLoc,yLoc;
+public class ShieldRoom extends Room{
 
-	public ShieldRoom(int x, int y)
-	{
-		xLoc = x;
-		yLoc = y;
+	public ShieldRoom(int x, int y) {
+		super(x, y);
 	}
 
 	/**
@@ -19,23 +15,10 @@ public class ShieldRoom {
 	public void enterRoom(Person x)
 	{
 		occupant = x;
-		int coin = (int)(Math.random()*5);
-		if (xLoc == 0 && yLoc == 0)
-		{
-			System.out.println("You are at the entrance of the castle.");
-		}
-		System.out.println("You found " + coin + " coins!");
+		System.out.println("You found a shield!");
+		x.changeArmor(1);
+		x.showArmor();
 		x.setxLoc(this.xLoc);
 		x.setyLoc(this.yLoc);
 	}
-
-	/**
-	 * Removes the player from the room.
-	 * @param x
-	 */
-	public void leaveRoom(Person x)
-	{
-		occupant = null;
-	}
-	
 }

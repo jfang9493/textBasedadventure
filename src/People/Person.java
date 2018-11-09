@@ -1,10 +1,12 @@
 package People;
 
+import Game.Runner;
+
 /**
  * Person represents the player as they move through the game.
  */
 public class Person {
-	int xLoc, yLoc, shield, potion, money;
+	int xLoc, yLoc, armor, health, treasure;
 
 
 	public int getxLoc() {
@@ -23,14 +25,46 @@ public class Person {
 		this.yLoc = yLoc;
 	}
 
-	public Person (int shield, int potion, int money, int xLoc, int yLoc)
+	public void changeHealth(int num) {
+		this.health += num;
+	}
+
+	public void showHealth() {
+		System.out.println("You have " + this.health + "health.");
+		if (this.health <= 0) {
+			System.out.println("You have died");
+			Runner.gameOff();
+		}
+	}
+	public Boolean hasArmor() {
+		if (this.armor >0) {
+			return true;
+		}
+		else return false;
+	}
+	public void changeArmor(int num) {
+		this.armor += num;
+	}
+
+	public void showArmor() {
+		System.out.println("You have " + this.armor + " armor.");
+	}
+
+	public void addTreasure(){
+		this.treasure = 1;
+	}
+
+	public Boolean checkTreasure(){
+		if (this.treasure == 1) return true;
+		else return false;
+	}
+	public Person (int health,int armor, int xLoc, int yLoc,int treasure)
 	{
 		this.xLoc = xLoc;
 		this.yLoc = yLoc;
-		this.shield = shield;
-		this.potion = potion;
-		this.money = money;
+		this.armor = armor;
+		this.health = health;
+		this.treasure = treasure;
 	}
-
 
 }

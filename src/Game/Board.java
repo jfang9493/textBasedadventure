@@ -20,6 +20,7 @@ public class Board
     {
         board[row][col] = room;
     }
+
     public String print()
     {
         String str = "";

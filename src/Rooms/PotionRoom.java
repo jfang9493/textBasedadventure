@@ -2,11 +2,13 @@ package Rooms;
 
 import People.Person;
 
-public class PotionRoom extends {
-	/**
-	 * Method controls the results when a person enters this room.
-	 * @param x the Person entering
-	 */
+public class PotionRoom extends Room{
+
+	public PotionRoom(int x, int y) {
+		super(x, y);
+	}
+
+	@Override
 	public void enterRoom(Person x)
 	{
 		occupant = x;
@@ -16,18 +18,10 @@ public class PotionRoom extends {
 			System.out.println("You found a potion!");
 		}
 		System.out.println("You recovered " + recover + " health!");
-		p.health += recover;
+		x.changeHealth(recover);
+		x.showHealth();
 		x.setxLoc(this.xLoc);
 		x.setyLoc(this.yLoc);
-	}
-
-	/**
-	 * Removes the player from the room.
-	 * @param x
-	 */
-	public void leaveRoom(Person x)
-	{
-		occupant = null;
 	}
 	
 }

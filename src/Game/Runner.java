@@ -1,10 +1,8 @@
 package Game;
 
 import People.Person;
-import Rooms.MonsterRoom;
+import Rooms.*;
 import Game.Board;
-import Rooms.Room;
-import Rooms.WinningRoom;
 
 import java.util.Scanner;
 
@@ -24,12 +22,8 @@ public class Runner {
 				building[x][y] = new Room(x,y);
 			}
 		}
-		
-		//Create a random winning room.
-		int x = (int)(Math.random()*building.length);
-		int y = (int)(Math.random()*building.length);
-		building[x][y] = new WinningRoom(x, y);
 
+		int x,y;
 		//Create 5-7 random monster rooms
 		int randomMonster = (int) (Math.random()*2)+5;
 		for (int i = 0; i < randomMonster; i++) {
@@ -39,7 +33,7 @@ public class Runner {
 		}
 
 		//Create 3 random item rooms
-		/** for (int i = 0; i < 3;i++)
+		for (int i = 0; i < 3;i++)
 		{
 			if (Math.random() > 0.50) {
 				x = (int) (Math.random() * building.length);
@@ -51,16 +45,19 @@ public class Runner {
 				y = (int) (Math.random() * building.length);
 				building[x][y] = new ShieldRoom(x, y);
 			}
-		}*/
+		}
+		//Create a random treasure room.
+		x = (int)(Math.random()*building.length);
+		y = (int)(Math.random()*building.length);
+		building[x][y] = new WinningRoom(x, y);
 
-
-		 //Setup player 1 and the input scanner
-		Person player1 = new Person(0,5,0, 0,0);
+		//Setup player 1 and the input scanner
+		Person player1 = new Person(10,2,0, 0,0);
 		building[0][0].enterRoom(player1);
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
 		{
-			System.out.println("Where would you like to move? (Choose N, S, E, W)");
+			System.out.println("Do you move N, S, E, or W?");
 			String move = in.nextLine();
 			if(validMove(move, player1, building))
 			{
@@ -70,8 +67,6 @@ public class Runner {
 			else {
 				System.out.println("Please choose a valid move.");
 			}
-			
-			
 		}
 		in.close();
 	}
@@ -139,6 +134,7 @@ public class Runner {
 		}
 		return true;
 	}
+
 	public static void gameOff()
 	{
 		gameOn = false;
