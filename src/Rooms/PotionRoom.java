@@ -12,7 +12,7 @@ public class PotionRoom extends Room{
 	public void enterRoom(Person x)
 	{
 		occupant = x;
-		int recover = (int)(Math.random()*2);
+		int recover = (int)(Math.random()*2)+1;
 		if (xLoc == 0 && yLoc == 0)
 		{
 			System.out.println("You found a potion!");

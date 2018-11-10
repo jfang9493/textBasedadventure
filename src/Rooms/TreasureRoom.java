@@ -12,8 +12,8 @@ public class TreasureRoom extends Room{
 	public void enterRoom(Person x)
 	{
 		occupant = x;
-		System.out.println("You have found the treasure! Try to get out of the catle without dying");
-		x.showHealth();
+		System.out.println("You have found the treasure! Try to get out of the castle without dying.");
+		x.addTreasure();
 		x.setxLoc(this.xLoc);
 		x.setyLoc(this.yLoc);
 	}

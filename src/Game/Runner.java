@@ -12,60 +12,84 @@ public class Runner {
 	
 	public static void main(String[] args)
 	{
-		Room[][] building = new Room[5][5];
+		Board building = new Board(5,5);
 
 		//Fill the building with normal rooms
-		for (int x = 0; x<building.length; x++)
+		for (int x = 0; x<building.board.length; x++)
 		{
-			for (int y = 0; y < building[x].length; y++)
+			for (int y = 0; y < building.board[x].length; y++)
 			{
-				building[x][y] = new Room(x,y);
+				building.board[x][y] = new Room(x,y);
 			}
 		}
 
 		int x,y;
-		//Create 5-7 random monster rooms
-		int randomMonster = (int) (Math.random()*2)+5;
+		//Create 11-12 random monster rooms
+		int randomMonster = (int) Math.random()+11;
 		for (int i = 0; i < randomMonster; i++) {
-			x = (int) (Math.random() * building.length);
-			y = (int) (Math.random() * building.length);
-			building[x][y] = new MonsterRoom(x, y);
+			x = (int) (Math.random() * building.board.length);
+			y = (int) (Math.random() * building.board.length);
+			if (x == 0 && y == 0) {
+				x = (int) Math.random()*3+1;
+				y = (int) Math.random()*3+1;
+			}
+			building.board[x][y] = new MonsterRoom(x, y);
 		}
 
-		//Create 3 random item rooms
-		for (int i = 0; i < 3;i++)
+		//Create 5 random item rooms
+		for (int i = 0; i < 5;i++)
 		{
 			if (Math.random() > 0.50) {
-				x = (int) (Math.random() * building.length);
-				y = (int) (Math.random() * building.length);
-				building[x][y] = new PotionRoom(x, y);
+				x = (int) (Math.random() * building.board.length);
+				y = (int) (Math.random() * building.board.length);
+				building.board[x][y] = new PotionRoom(x, y);
 			}
 			else {
-				x = (int) (Math.random() * building.length);
-				y = (int) (Math.random() * building.length);
-				building[x][y] = new ShieldRoom(x, y);
+				x = (int) (Math.random() * building.board.length);
+				y = (int) (Math.random() * building.board.length);
+				building.board[x][y] = new ShieldRoom(x, y);
 			}
 		}
 		//Create a random treasure room.
-		x = (int)(Math.random()*building.length);
-		y = (int)(Math.random()*building.length);
-		building[x][y] = new WinningRoom(x, y);
+		x = (int)(Math.random()*building.board.length);
+		y = (int)(Math.random()*building.board.length);
+		if (x == 0 && y == 0) {
+			x = (int) Math.random()*3+1;
+			y = (int) Math.random()*3+1;
+		}
+		building.board[x][y] = new TreasureRoom(x, y);
 
+		System.out.println("treasure roon: " + x + "," + y);
 		//Setup player 1 and the input scanner
-		Person player1 = new Person(10,2,0, 0,0);
-		building[0][0].enterRoom(player1);
+		Person player1 = new Person(10,1,0, 0,0);
+		building.board[0][0].enterRoom(player1);
 		Scanner in = new Scanner(System.in);
+		System.out.println("Use the WASD keys to move");
 		while(gameOn)
 		{
-			System.out.println("Do you move N, S, E, or W?");
+			for(int i = 0; i < building.board.length; i++)
+			{
+				for (int j = 0; j < building.board[x].length; j++)
+				{
+					if(player1.getxLoc() == i && player1.getyLoc() == j)
+						System.out.print("[O]");
+					else
+						System.out.print("[ ]");
+				}
+				System.out.println();
+			}
 			String move = in.nextLine();
-			if(validMove(move, player1, building))
+			if(validMove(move, player1, building.board))
 			{
 				System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
 				
 			}
 			else {
 				System.out.println("Please choose a valid move.");
+			}
+			if (player1.getxLoc() == 0 && player1.getyLoc() == 0 && player1.checkTreasure()) {
+				System.out.println("You successfully escaped the castle with the treasure. Unfortunately you tripped on a rock outside and died.");
+				gameOn = false;
 			}
 		}
 		in.close();
@@ -82,7 +106,7 @@ public class Runner {
 	{
 		move = move.toLowerCase().trim();
 		switch (move) {
-			case "n":
+			case "w":
 				if (p.getxLoc() > 0)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
@@ -93,7 +117,7 @@ public class Runner {
 				{
 					return false;
 				}
-			case "e":
+			case "d":
 				if (p.getyLoc()< map[p.getyLoc()].length -1)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
@@ -117,7 +141,7 @@ public class Runner {
 					return false;
 				}
 
-			case "w":
+			case "a":
 				if (p.getyLoc() > 0)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);

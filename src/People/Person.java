@@ -30,10 +30,12 @@ public class Person {
 	}
 
 	public void showHealth() {
-		System.out.println("You have " + this.health + "health.");
 		if (this.health <= 0) {
 			System.out.println("You have died");
 			Runner.gameOff();
+		}
+		else {
+			System.out.println("You have " + this.health + " health.");
 		}
 	}
 	public Boolean hasArmor() {
