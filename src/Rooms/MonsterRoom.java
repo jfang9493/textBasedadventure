@@ -10,6 +10,12 @@ public class MonsterRoom extends Room
 		super(x, y);
 	}
 
+	/**
+	 * Player battles a monster when entering this room
+	 * If player has armor, an armor point is removed
+	 * Otherwise player takes between 1 to 4 points of damage inclusively
+	 * @param x the Person entering
+	 */
 	@Override
 	public void enterRoom(Person x) {
 

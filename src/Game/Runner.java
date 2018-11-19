@@ -23,9 +23,9 @@ public class Runner {
 			}
 		}
 
+		//Create 7-12 random monster rooms
 		int x,y;
-		//Create 11-12 random monster rooms
-		int randomMonster = (int) Math.random()+11;
+		int randomMonster = (int) Math.random()*6+7;
 		for (int i = 0; i < randomMonster; i++) {
 			x = (int) (Math.random() * building.board.length);
 			y = (int) (Math.random() * building.board.length);

@@ -8,6 +8,10 @@ public class PotionRoom extends Room{
 		super(x, y);
 	}
 
+	/**
+	 * Heals the player's health points for a random number between 1-3 inclusively
+	 * @param x the Person entering
+	 */
 	@Override
 	public void enterRoom(Person x)
 	{

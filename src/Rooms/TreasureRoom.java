@@ -8,6 +8,10 @@ public class TreasureRoom extends Room{
 		super(x, y);
 	}
 
+	/**
+	 * Creates a treasure room that adds treasure to the player's inventory
+	 * @param x the Person entering
+	 */
 	@Override
 	public void enterRoom(Person x)
 	{
